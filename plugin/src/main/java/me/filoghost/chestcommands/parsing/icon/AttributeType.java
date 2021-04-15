@@ -5,28 +5,7 @@
  */
 package me.filoghost.chestcommands.parsing.icon;
 
-import me.filoghost.chestcommands.attribute.ActionsAttribute;
-import me.filoghost.chestcommands.attribute.AmountAttribute;
-import me.filoghost.chestcommands.attribute.AttributeErrorHandler;
-import me.filoghost.chestcommands.attribute.BannerColorAttribute;
-import me.filoghost.chestcommands.attribute.BannerPatternsAttribute;
-import me.filoghost.chestcommands.attribute.ClickPermissionAttribute;
-import me.filoghost.chestcommands.attribute.ClickPermissionMessageAttribute;
-import me.filoghost.chestcommands.attribute.DurabilityAttribute;
-import me.filoghost.chestcommands.attribute.EnchantmentsAttribute;
-import me.filoghost.chestcommands.attribute.ExpLevelsAttribute;
-import me.filoghost.chestcommands.attribute.IconAttribute;
-import me.filoghost.chestcommands.attribute.KeepOpenAttribute;
-import me.filoghost.chestcommands.attribute.LeatherColorAttribute;
-import me.filoghost.chestcommands.attribute.LoreAttribute;
-import me.filoghost.chestcommands.attribute.MaterialAttribute;
-import me.filoghost.chestcommands.attribute.NBTDataAttribute;
-import me.filoghost.chestcommands.attribute.NameAttribute;
-import me.filoghost.chestcommands.attribute.PositionAttribute;
-import me.filoghost.chestcommands.attribute.PriceAttribute;
-import me.filoghost.chestcommands.attribute.RequiredItemsAttribute;
-import me.filoghost.chestcommands.attribute.SkullOwnerAttribute;
-import me.filoghost.chestcommands.attribute.ViewPermissionAttribute;
+import me.filoghost.chestcommands.attribute.*;
 import me.filoghost.chestcommands.parsing.ParseException;
 import me.filoghost.fcommons.config.ConfigValue;
 import me.filoghost.fcommons.config.ConfigValueType;
@@ -50,6 +29,7 @@ public enum AttributeType {
     BANNER_COLOR("BANNER-COLOR", ConfigValueType.STRING, BannerColorAttribute::new),
     BANNER_PATTERNS("BANNER-PATTERNS", ConfigValueType.STRING_LIST, BannerPatternsAttribute::new),
     PRICE("PRICE", ConfigValueType.DOUBLE, PriceAttribute::new),
+    RUBIS("RUBIS", ConfigValueType.INTEGER, RubisAttribute::new),
     EXP_LEVELS("LEVELS", ConfigValueType.INTEGER, ExpLevelsAttribute::new),
     CLICK_PERMISSION("PERMISSION", ConfigValueType.STRING, ClickPermissionAttribute::new),
     CLICK_PERMISSION_MESSAGE("PERMISSION-MESSAGE", ConfigValueType.STRING, ClickPermissionMessageAttribute::new),

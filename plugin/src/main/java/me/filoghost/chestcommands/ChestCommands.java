@@ -10,10 +10,7 @@ import me.filoghost.chestcommands.command.CommandHandler;
 import me.filoghost.chestcommands.config.ConfigManager;
 import me.filoghost.chestcommands.config.CustomPlaceholders;
 import me.filoghost.chestcommands.config.Settings;
-import me.filoghost.chestcommands.hook.BarAPIHook;
-import me.filoghost.chestcommands.hook.BungeeCordHook;
-import me.filoghost.chestcommands.hook.PlaceholderAPIHook;
-import me.filoghost.chestcommands.hook.VaultEconomyHook;
+import me.filoghost.chestcommands.hook.*;
 import me.filoghost.chestcommands.legacy.UpgradeExecutorException;
 import me.filoghost.chestcommands.legacy.UpgradesExecutor;
 import me.filoghost.chestcommands.listener.CommandListener;
@@ -84,6 +81,7 @@ public class ChestCommands extends BaseJavaPlugin {
         BackendAPI.setImplementation(new DefaultBackendAPI());
 
         VaultEconomyHook.INSTANCE.setup();
+        HallyosEconomyHook.INSTANCE.setup();
         BarAPIHook.INSTANCE.setup();
         PlaceholderAPIHook.INSTANCE.setup();
         BungeeCordHook.INSTANCE.setup();
@@ -92,6 +90,12 @@ public class ChestCommands extends BaseJavaPlugin {
             Log.info("Hooked Vault");
         } else {
             Log.warning("Couldn't find Vault and a compatible economy plugin! Money-related features will not work.");
+        }
+
+        if (HallyosEconomyHook.INSTANCE.isEnabled()) {
+            Log.info("Hooked HallyosEconomyHook");
+        } else {
+            Log.warning("Couldn't find HallyosEconomy! Rubis-related features will not work.");
         }
 
         if (BarAPIHook.INSTANCE.isEnabled()) {

@@ -6,6 +6,7 @@
 package me.filoghost.chestcommands.placeholder;
 
 import me.filoghost.chestcommands.api.PlaceholderReplacer;
+import me.filoghost.chestcommands.hook.HallyosEconomyHook;
 import me.filoghost.chestcommands.hook.VaultEconomyHook;
 import org.bukkit.Bukkit;
 
@@ -24,6 +25,14 @@ public enum DefaultPlaceholder {
             return VaultEconomyHook.formatMoney(VaultEconomyHook.getMoney(player));
         } else {
             return "[ECONOMY PLUGIN NOT FOUND]";
+        }
+    }),
+
+    RUBIS("rubis", (player, argument) -> {
+        if (HallyosEconomyHook.INSTANCE.isEnabled()) {
+            return HallyosEconomyHook.formatMoney(HallyosEconomyHook.getMoney(player));
+        } else {
+            return "[HALLYOSECONOMY PLUGIN NOT FOUND]";
         }
     });
 

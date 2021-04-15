@@ -12,6 +12,7 @@ import me.filoghost.chestcommands.api.MenuView;
 import me.filoghost.chestcommands.config.Lang;
 import me.filoghost.chestcommands.icon.requirement.RequiredExpLevel;
 import me.filoghost.chestcommands.icon.requirement.RequiredMoney;
+import me.filoghost.chestcommands.icon.requirement.RequiredRubis;
 import me.filoghost.chestcommands.icon.requirement.Requirement;
 import me.filoghost.chestcommands.icon.requirement.item.RequiredItem;
 import me.filoghost.chestcommands.icon.requirement.item.RequiredItems;
@@ -35,6 +36,7 @@ public class InternalConfigurableIcon extends BaseConfigurableIcon implements Re
     private RequiredMoney requiredMoney;
     private RequiredExpLevel requiredExpLevel;
     private RequiredItems requiredItems;
+    private RequiredRubis requiredRubis;
 
     private ImmutableList<Action> clickActions;
     private ClickResult clickResult;
@@ -70,6 +72,14 @@ public class InternalConfigurableIcon extends BaseConfigurableIcon implements Re
             this.requiredMoney = new RequiredMoney(requiredMoney);
         } else {
             this.requiredMoney = null;
+        }
+    }
+
+    public void setRequiredRubis(Integer requiredRubis) {
+        if (requiredRubis > 0) {
+            this.requiredRubis = new RequiredRubis(requiredRubis);
+        } else {
+            this.requiredRubis = null;
         }
     }
 
@@ -137,7 +147,7 @@ public class InternalConfigurableIcon extends BaseConfigurableIcon implements Re
         }
 
         // Check all the requirements
-        Requirement[] requirements = {requiredMoney, requiredExpLevel, requiredItems};
+        Requirement[] requirements = {requiredMoney, requiredExpLevel, requiredItems, requiredRubis};
         boolean hasAllRequirements = Requirement.hasAllCosts(player, requirements);
         if (!hasAllRequirements) {
             return clickResult;
